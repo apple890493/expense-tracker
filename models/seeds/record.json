@@ -1,0 +1,37 @@
+[
+  {
+    "name": "午餐",
+    "category": "餐飲食品",
+    "date": "2020-07-20",
+    "amount": 70,
+    "trader": "便當店"
+  },
+  {
+    "name": "書-1984",
+    "category": "休閒娛樂",
+    "date": "2020-07-20",
+    "amount": "300",
+    "trader": "誠品書店"
+  },
+  {
+    "name": "悠遊卡",
+    "category": "交通出行",
+    "date": "2020-07-19",
+    "amount": 500,
+    "trader": ""
+  },
+  {
+    "name": "吸塵器",
+    "category": "家居物業",
+    "date": "2020-07-19",
+    "amount": 6000,
+    "trader": "BicCamera"
+  },
+  {
+    "name": "保險",
+    "category": "其他",
+    "date": "2020-07-20",
+    "amount": 20000,
+    "trader": "富邦銀行"
+  }
+]
