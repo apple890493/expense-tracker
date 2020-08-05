@@ -2,6 +2,9 @@ const express = require('express')
 //handlebars 樣本引擎
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+// 載入 Record model
+const Record = require('./models/record')
+
 
 const app = express()
 const port = 3000
@@ -22,12 +25,15 @@ db.once('open', () => {
 //middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-
+app.use(express.static('public'))
 
 //routes
 app.get('/', (req, res) => {
-  res.render('index')
+  Record.find()
+    .lean()
+    .then(records => res.render('index', { records }))
 })
+
 
 //web
 app.listen(port, () => {
