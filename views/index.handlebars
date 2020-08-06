@@ -1,24 +1,43 @@
 <div class="container" id="container">
   <div class="left-container">
-    <div class="overlay">
-      <div class="overlay-panel overlay-right">
-        <h1>Wellcome</h1>
-      </div>
-    </div>
+    <a style="font-size:50px">{{totalAmount}}</a>
   </div>
   <div class="right-container">
     <div class="right-container-top">
-      <form action="/" method="POST">
-        <button id="btn-creat" type="submit">Creat</button>
-      </form>
+      <a href="#">
+        <button id="btn-creat" type="button">Create</button>
+      </a>
+      {{!-- 選擇 --}}
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Action
+        </button>
+        <div class="dropdown-menu">
+          {{#each cotegories}}
+          <a class="dropdown-item" href="#">{{this.categoryName}}</a>
+          {{/each}}
+        </div>
+      </div>
     </div>
+
+    {{!-- 內容 --}}
+
     <div class="form-group">
+
       {{#each records}}
       <div class="list-group-item">
         <div class="d-flex list-content">
-          <div class="d-flex left-conten">
+          <div class="d-flex left-contents">
             <div class="icon-body mr-4">
-              <span><i class="fas fa-pen"></i></span>
+              <span>
+                <i class="
+                    {{#if this.category === '家居物業'}} fas fa-home {{/if}}
+                    {{#if this.category === '交通出行'}} fas fa-shuttle-van {{/if}}
+                    {{#if this.category === '休閒娛樂'}} fas fa-grin-beam {{/if}}
+                    {{#if this.category === '餐飲食品'}} fas fa-utensils {{/if}}
+                    {{#if this.category === '其他'}} fas fa-pen {{/if}}
+                    "></i> </span>
             </div>
             <div class="text-body">
               <h6 class="mb-1">{{this.name}}</h6>
@@ -29,14 +48,33 @@
             <h5>{{this.amount}}</h5>
           </div>
         </div>
-        <div class="icon-group">
+        <div class="content-footer">
           <a id="btn-edit" href="#"><i class="fas fa-pen-square fa-lg"></i></a>
-          <a id="btn-delete" href=""><i class="fas fa-minus-square fa-lg"></i></a>
+          <a id="btn-delete" href="#" data-toggle="modal" data-target="#exampleModal"><i
+              class="fas fa-minus-square fa-lg"></i></a>
+        </div>
+      </div>
+      {{!-- 提示 --}}
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">提醒</h5>
+            </div>
+            <div class="modal-body">
+              確定刪除以此筆 {{this.date}}{{this.name}} 紀錄嗎?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <form action="/delete">
+                <button class="btn btn-danger" type="submit">Delete</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
       {{/each}}
     </div>
   </div>
-
-
 </div>

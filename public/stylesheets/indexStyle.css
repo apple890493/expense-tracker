@@ -1,5 +1,5 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 main {
@@ -38,6 +38,14 @@ main {
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 }
+
+/* #btn-delete {
+  font-size: 10px;
+}
+
+#btn-edit {
+  font-size: 10px;
+} */
 
 .left-container {
   display: flex;
@@ -81,7 +89,23 @@ main {
   justify-content: space-between;
 }
 
-.icon-group{
+.text-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-content {
+  display: flex;
+  align-items: center;
+}
+
+.icon-body {
+  display: flex;
+  align-items: center;
+}
+
+.content-footer{
   display: flex;
   flex-direction: column;
 }
