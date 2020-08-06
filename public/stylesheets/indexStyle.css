@@ -83,6 +83,10 @@ main {
   color: #FFFFFF;
 }
 
+.left-container a {
+  font-family: Impact;
+}
+
 .right-container {
   border:1px solid #bca0dc;
   display: inline-flex;

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+      <form action="/expense/{{ record._id }}/edit" method="POST">
+        <div class="card text-center">
+          <div class="card-header">
+            編輯紀錄
+          </div>
+          <div class="card-body">
+            <div class="form-group row">
+              <label for="inputDate3" class="col-md-2 col-form-label">日期(*)</label>
+              <div class="col-md-10">
+                <input type="date" name="date" class="form-control" id="inputDate3" value="{{record.date}}" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="inputName3" class="col-md-2 col-form-label">名稱(*)</label>
+              <div class="col-md-10">
+                <input type="text" name="name" value="{{record.name}}" class="form-control" id="inputName3"
+                  placeholder="Name" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="inputAmount3" class="col-md-2 col-form-label">金額(*)</label>
+              <div class="col-md-10">
+                <input type="number" min="1" max="999999999" step="1" name="amount" class="form-control"
+                  id="inputAmount3" placeholder="Amount" value="{{record.amount}}" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="inputCategory3" class="col-md-2 col-form-label">類別(*)</label>
+              <div class="col-md-10">
+                <select class="custom-select custom-select-sm mb-3" id="inputCatergory" name="category" required>
+                  <option value="{{record.category}}" disabled selected>{{record.category}}</option>
+                  {{#each cotegories}}
+                  <option value="{{this.title}}">{{this.title}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+
+          </div>
+          <div class="card-footer text-muted">
+            <button class="btn btn-dark btn-creat" type="submit">Creat</button>
+            <a href="/">
+              <button type="button" class="btn btn-dark btn-back">Back</button>
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

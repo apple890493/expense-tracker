@@ -1,6 +1,8 @@
 <div class="container" id="container">
   <div class="left-container">
-    <a style="font-size:50px"><i class="fas fa-dollar-sign"></i>{{totalAmount}}</a>
+    <a style="font-size:50px">
+      <i class="fas fa-dollar-sign"></i>
+      {{totalAmount}}</a>
   </div>
   <div class="right-container">
     <div class="right-container-top">
@@ -15,7 +17,7 @@
         </button>
         <div class="dropdown-menu">
           {{#each cotegories}}
-          <a class="dropdown-item" href="#">{{this.categoryName}}</a>
+          <a class="dropdown-item" href="#"><i class="{{this.icon}}"></i> {{this.title}}</a>
           {{/each}}
         </div>
       </div>
@@ -50,7 +52,7 @@
           </div>
         </div>
         <div class="content-footer">
-          <a id="btn-edit" href="#"><i class="fas fa-pen-square fa-lg"></i></a>
+          <a id="btn-edit" href="/expense/{{this._id}}/edit"><i class="fas fa-pen-square fa-lg"></i></a>
           <a id="btn-delete" href="#" data-toggle="modal" data-target="#exampleModal{{this._id}}"><i
               class="fas fa-minus-square fa-lg"></i></a>
         </div>

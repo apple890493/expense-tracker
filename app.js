@@ -40,11 +40,12 @@ Handlebars.registerHelper("match", function (a, b, options) {
 //routes
 //all
 app.get('/', (req, res) => {
+  let totalAmount = 0
   Record.find()
     .lean()
     .sort({ date: '1' })
     .then(records => {
-      const totalAmount = records.map(record => record.amount).reduce((a, b) => { return a + b }, 0)
+      totalAmount += records.map(record => record.amount).reduce((a, b) => { return a + b }, 0)
       Category.find()
         .lean()
         .sort({ _id: '1' })
@@ -62,10 +63,36 @@ app.get('/expense/new', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.get('/expense/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Category.find()
+    .lean()
+    .sort({ _id: '1' })
+    .then(cotegories => {
+      Record.findById(id)
+        .lean()
+        .then((record) =>
+          res.render('edit', { record, cotegories }))
+    })
+    .catch(error => console.log(error))
+})
+
 app.post('/expense', (req, res) => {
   const item = req.body
   console.log(req.body)
   return Record.create(item)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+app.post('/expense/:id/edit', (req, res) => {
+  const newItem = req.body
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => {
+      record = Object.assign(record, newItem)
+      record.save()
+    })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
