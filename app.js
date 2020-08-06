@@ -2,9 +2,10 @@ const express = require('express')
 //handlebars 樣本引擎
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
-const Handlebars = require('handlebars')
-const Record = require('./models/record')
-const Category = require('./models/category')
+const Handlebars = require('handlebars') //導入nandlebars
+const bodyParser = require('body-parser') //導入body-parser解析req.body
+const Record = require('./models/record') //導入record資料表
+const Category = require('./models/category') //導入category資料表
 
 const app = express()
 const port = 3000
@@ -26,8 +27,10 @@ db.once('open', () => {
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
-//Handlebars helper
+
+//setting Handlebars helper for index
 Handlebars.registerHelper("match", function (a, b, options) {
   if (a === b)
     return options.fn(this)
@@ -52,10 +55,20 @@ app.get('/', (req, res) => {
 
 //new
 app.get('/expense/new', (req, res) => {
-  return res.render('new')
+  Category.find()
+    .lean()
+    .sort({ _id: '1' })
+    .then(cotegories => res.render('new', { cotegories }))
+    .catch(error => console.log(error))
 })
 
-app.post('')
+app.post('/expense', (req, res) => {
+  const item = req.body
+  console.log(req.body)
+  return Record.create(item)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 
 //web
