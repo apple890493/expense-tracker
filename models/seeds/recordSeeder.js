@@ -9,11 +9,11 @@ const db = mongoose.connection
 db.on('error', () => {
   console.log('mongodb error!')
 })
+
 db.once('open', () => {
   console.log('record mongodb ok!')
   for (let i = 0; i < recordData.length; i++) {
     Record.create(recordData[i])
   }
-
   console.log('record done!')
 })

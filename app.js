@@ -2,11 +2,9 @@ const express = require('express')
 //handlebars 樣本引擎
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
-// 載入 Record model
+const Handlebars = require('handlebars')
 const Record = require('./models/record')
-// 載入 Category model
 const Category = require('./models/category')
-const record = require('./models/record')
 
 const app = express()
 const port = 3000
@@ -29,7 +27,15 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
+//Handlebars helper
+Handlebars.registerHelper("match", function (a, b, options) {
+  if (a === b)
+    return options.fn(this)
+})
+
+
 //routes
+//all
 app.get('/', (req, res) => {
   Record.find()
     .lean()
@@ -43,6 +49,13 @@ app.get('/', (req, res) => {
     })
     .catch(error => console.log(error))
 })
+
+//new
+app.get('/expense/new', (req, res) => {
+  return res.render('new')
+})
+
+app.post('')
 
 
 //web

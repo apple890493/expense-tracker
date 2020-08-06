@@ -26,6 +26,16 @@ main {
   align-items: center;
 }
 
+#container-new {
+	background-color: #fff;
+	border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	overflow: hidden;
+	width: 800px;
+	max-width: 100%;
+  min-height: 480px;
+}
+
 #btn-creat {
 	border-radius: 10px;
 	border: 1px solid #3c1361;
@@ -39,13 +49,11 @@ main {
 	transition: transform 80ms ease-in;
 }
 
-/* #btn-delete {
-  font-size: 10px;
+#btn-filter {
+  background-color:#7c5295;
+  color: white;
 }
 
-#btn-edit {
-  font-size: 10px;
-} */
 
 .left-container {
   display: flex;
@@ -66,7 +74,7 @@ main {
 
 .right-container {
   border:1px solid #bca0dc;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;

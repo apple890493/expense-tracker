@@ -1,17 +1,17 @@
 <div class="container" id="container">
   <div class="left-container">
-    <a style="font-size:50px">{{totalAmount}}</a>
+    <a style="font-size:50px"><i class="fas fa-dollar-sign"></i>{{totalAmount}}</a>
   </div>
   <div class="right-container">
     <div class="right-container-top">
-      <a href="#">
-        <button id="btn-creat" type="button">Create</button>
+      <a href="/expense/new">
+        <button class="mr-3" id="btn-creat" type="button">Create</button>
       </a>
       {{!-- 選擇 --}}
       <div class="btn-group">
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+        <button type="button" id="btn-filter" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
-          Action
+          <i class="fas fa-filter"></i>
         </button>
         <div class="dropdown-menu">
           {{#each cotegories}}
@@ -32,12 +32,13 @@
             <div class="icon-body mr-4">
               <span>
                 <i class="
-                    {{#if this.category === '家居物業'}} fas fa-home {{/if}}
-                    {{#if this.category === '交通出行'}} fas fa-shuttle-van {{/if}}
-                    {{#if this.category === '休閒娛樂'}} fas fa-grin-beam {{/if}}
-                    {{#if this.category === '餐飲食品'}} fas fa-utensils {{/if}}
-                    {{#if this.category === '其他'}} fas fa-pen {{/if}}
-                    "></i> </span>
+                {{#match this.category '家居物業'}} fas fa-home {{/match}}
+                {{#match this.category '交通出行'}} fas fa-shuttle-van {{/match}}
+                {{#match this.category '休閒娛樂'}} fas fa-grin-beam {{/match}}
+                {{#match this.category '餐飲食品'}} fas fa-utensils {{/match}}
+                {{#match this.category  '其他'}} fas fa-pen {{/match}}
+                "></i>
+              </span>
             </div>
             <div class="text-body">
               <h6 class="mb-1">{{this.name}}</h6>
@@ -45,18 +46,18 @@
             </div>
           </div>
           <div class="right-content mr-5">
-            <h5>{{this.amount}}</h5>
+            <p><i class="fas fa-dollar-sign"></i> {{this.amount}}</p>
           </div>
         </div>
         <div class="content-footer">
           <a id="btn-edit" href="#"><i class="fas fa-pen-square fa-lg"></i></a>
-          <a id="btn-delete" href="#" data-toggle="modal" data-target="#exampleModal"><i
+          <a id="btn-delete" href="#" data-toggle="modal" data-target="#exampleModal{{this._id}}"><i
               class="fas fa-minus-square fa-lg"></i></a>
         </div>
       </div>
       {{!-- 提示 --}}
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+      <div class="modal fade" id="exampleModal{{this._id}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">

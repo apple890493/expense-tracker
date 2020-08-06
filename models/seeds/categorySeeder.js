@@ -12,25 +12,26 @@ db.once('open', () => {
   console.log('catergory mongodb ok!')
   Category.create(
     {
-      categoryName: "家居物業",
-      categoryIcon: "fas fa-home"
+      title: "家居物業",
+      icon: "fas fa-home"
     },
     {
-      categoryName: "交通出行",
-      categoryIcon: "fas fa-shuttle-van"
+      title: "交通出行",
+      icon: "fas fa-shuttle-van"
     },
     {
-      categoryName: "休閒娛樂",
-      categoryIcon: "fas fa-grin-beam"
+      title: "休閒娛樂",
+      icon: "fas fa-grin-beam"
     },
     {
-      categoryName: "餐飲食品",
-      categoryIcon: "fas fa-utensils"
+      title: "餐飲食品",
+      icon: "fas fa-utensils"
     },
     {
-      categoryName: "其他",
-      categoryIcon: "fas fa-pen"
+      title: "其他",
+      icon: "fas fa-pen"
     }
   )
   console.log('categorySeeder done!')
 })
+
