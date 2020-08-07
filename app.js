@@ -8,7 +8,7 @@ require('./config/mongoose')
 const routes = require('./routes')
 
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 3000
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -23,9 +23,7 @@ Handlebars.registerHelper("match", function (a, b, options) {
     return options.fn(this)
 })
 
-
-
 //web
-app.listen(port, () => {
-  console.log(`localhost:${port}`)
+app.listen(PORT, () => {
+  console.log('App is running on App is running on http://localhost:3000')
 })
