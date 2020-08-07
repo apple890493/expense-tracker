@@ -49,17 +49,32 @@ app.get('/', (req, res) => {
       Category.find()
         .lean()
         .sort({ _id: '1' })
-        .then(cotegories => res.render('index', { records, totalAmount, cotegories }))
+        .then(categories => res.render('index', { records, totalAmount, categories }))
     })
     .catch(error => console.log(error))
 })
 
+
 //new
 app.get('/expense/new', (req, res) => {
-  Category.find()
+  const local = new Date()
+  let day = local.getDate()
+  let month = local.getMonth() + 1
+  const year = local.getFullYear()
+  if (day < 10) {
+    day = "0" + day
+  }
+  if (month < 10 || day < 10) {
+    month = "0" + month
+  }
+
+  const today = year + "-" + month + "-" + day
+  console.log(today)
+
+  return Category.find()
     .lean()
     .sort({ _id: '1' })
-    .then(cotegories => res.render('new', { cotegories }))
+    .then(categories => res.render('new', { categories, today }))
     .catch(error => console.log(error))
 })
 
@@ -68,11 +83,11 @@ app.get('/expense/:id/edit', (req, res) => {
   return Category.find()
     .lean()
     .sort({ _id: '1' })
-    .then(cotegories => {
+    .then(categories => {
       Record.findById(id)
         .lean()
         .then((record) =>
-          res.render('edit', { record, cotegories }))
+          res.render('edit', { record, categories }))
     })
     .catch(error => console.log(error))
 })
@@ -96,6 +111,36 @@ app.post('/expense/:id/edit', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
+app.post('/expense/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+
+//filters
+app.get('/expense/filter', (req, res) => {
+  let totalAmount = 0
+  const title = req.query.by
+  if (title === 'all') {
+    res.redirect('/')
+  } else {
+    Record.find({ "category": { "$all": [title] } })
+      .lean()
+      .then(records => {
+        totalAmount += records.map(record => record.amount).reduce((a, b) => { return a + b }, 0)
+        Category.find()
+          .lean()
+          .sort({ _id: '1' })
+          .then(categories => res.render('index', { records, categories, totalAmount }))
+          .catch(error => console.log(error))
+      })
+  }
+})
+
 
 
 //web

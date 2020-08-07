@@ -10,7 +10,7 @@
             <div class="form-group row">
               <label for="inputDate3" class="col-md-2 col-form-label">日期(*)</label>
               <div class="col-md-10">
-                <input type="date" name="date" class="form-control" id="inputDate3" value="2020/08/06" required>
+                <input type="date" name="date" class="form-control" id="inputDate3" value="{{today}}" required>
               </div>
             </div>
 
@@ -34,7 +34,7 @@
               <div class="col-md-10">
                 <select class="custom-select custom-select-sm mb-3" id="inputCatergory" name="category" required>
                   <option value="" disabled selected>Category type</option>
-                  {{#each cotegories}}
+                  {{#each categories}}
                   <option value="{{this.title}}">{{this.title}}</option>
                   {{/each}}
                 </select>

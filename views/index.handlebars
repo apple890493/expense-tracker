@@ -15,11 +15,15 @@
           aria-expanded="false">
           <i class="fas fa-filter"></i>
         </button>
-        <div class="dropdown-menu">
-          {{#each cotegories}}
-          <a class="dropdown-item" href="#"><i class="{{this.icon}}"></i> {{this.title}}</a>
-          {{/each}}
-        </div>
+        <form action="expense/filter">
+          <div class="dropdown-menu">
+            <button class="dropdown-item" name="by" value="all">All</button>
+            {{#each categories}}
+            <button class="dropdown-item" name="by" value="{{this.title}}"><i class="{{this.icon}}"></i>
+              {{this.title}}</button>
+            {{/each}}
+          </div>
+        </form>
       </div>
     </div>
 
@@ -70,7 +74,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <form action="/delete">
+              <form action="/expense/{{this._id}}/delete" method="POST">
                 <button class="btn btn-danger" type="submit">Delete</button>
               </form>
             </div>
