@@ -44,7 +44,6 @@ router.get('/:id/edit', (req, res) => {
 
 router.post('/', (req, res) => {
   const item = req.body
-  console.log(req.body)
   return Record.create(item)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

@@ -12,7 +12,7 @@
 
 ### 啟動方式
 - 將專案clone到本地端
-  `https://github.com/apple890493/expense-tracker.git‵
+  `https://github.com/apple890493/expense-tracker.git`
 - 進入專案
   `cd expense-tracker`
 - 下載package
@@ -29,5 +29,5 @@
 - Express: v4.17.1
 - Express-Handlebars: 5.1.0
 - Body-parser: 1.19.0
-- Mongoose: 5.9.25"
+- Mongoose: 5.9.25
 - Handlebars: 4.7.6

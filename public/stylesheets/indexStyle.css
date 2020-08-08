@@ -66,6 +66,12 @@ main {
   color: #7c5295;
 }
 
+.btn-delete {
+  border: none;
+  background-color:#7c5295;
+  color: #FFFFFF;
+}
+
 .left-container {
   display: flex;
   justify-content: center;
