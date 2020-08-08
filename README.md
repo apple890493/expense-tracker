@@ -31,3 +31,4 @@
 - Body-parser: 1.19.0
 - Mongoose: 5.9.25
 - Handlebars: 4.7.6
+- Method-override: 3.0.0

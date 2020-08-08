@@ -74,7 +74,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary btn-back" data-dismiss="modal">Close</button>
-              <form action="/expense/{{this._id}}/delete" method="POST">
+              <form action="/expense/{{this._id}}?_method=DELETE" method="POST">
                 <button class="btn btn-danger btn-delete" type="submit">Delete</button>
               </form>
             </div>
