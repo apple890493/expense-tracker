@@ -8,18 +8,7 @@ const Category = require('../../models/category')
 //new
 router.get('/new', (req, res) => {
   const local = new Date()
-  let day = local.getDate()
-  let month = local.getMonth() + 1
-  const year = local.getFullYear()
-  if (day < 10) {
-    day = "0" + day
-  }
-  if (month < 10 || day < 10) {
-    month = "0" + month
-  }
-
-  const today = year + "-" + month + "-" + day
-  console.log(today)
+  const today = local.toISOString().slice(0, 10)
 
   return Category.find()
     .lean()

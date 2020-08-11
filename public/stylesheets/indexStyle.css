@@ -36,7 +36,7 @@ main {
   min-height: 480px;
 }
 
-#btn-creat {
+#btn-create2 {
 	border-radius: 10px;
 	border: 1px solid #3c1361;
 	background-color: #3c1361;
@@ -54,7 +54,7 @@ main {
   color: white;
 }
 
-.btn-creat {
+.btn-create {
   border: none;
   background-color:#7c5295;
   color: #FFFFFF;
